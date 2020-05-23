@@ -29,6 +29,7 @@ namespace BusinessLayer.Services.ServiceStationService
         {
             return _mapper.Map<CarTechnicalCondition>(await _conditionRepository.GetById(id));
         }
+        
         public async Task<IEnumerable<CarTechnicalCondition>> GetItems()
         {
             return _mapper.Map<IEnumerable<CarTechnicalConditionDTO>, List<CarTechnicalCondition>>(await _conditionRepository.GetAll());

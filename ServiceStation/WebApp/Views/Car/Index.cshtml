@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BusinessLayer.Models.DTO.Car>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EngineCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyNubmer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfProduction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngineCapacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyNubmer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOfProduction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

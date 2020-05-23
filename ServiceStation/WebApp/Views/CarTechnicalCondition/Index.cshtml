@@ -1,0 +1,83 @@
+﻿@model IEnumerable<BusinessLayer.Models.DTO.CarTechnicalCondition>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Milleage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BreakSystem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suspension)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wheels)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lighting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarbonDioxideContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InspectorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InspectionMark)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Milleage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BreakSystem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Suspension)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wheels)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lighting)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarbonDioxideContent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InspectorId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InspectionMark)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

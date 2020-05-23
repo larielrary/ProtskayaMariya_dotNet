@@ -1,0 +1,73 @@
+﻿@model BusinessLayer.Models.DTO.CarTechnicalCondition
+
+<h4>Car technical condition</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Milleage" class="control-label"></label>
+                <input asp-for="Milleage" class="form-control" />
+                <span asp-validation-for="Milleage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BreakSystem" class="control-label"></label>
+                <input asp-for="BreakSystem" class="form-control" />
+                <span asp-validation-for="BreakSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suspension" class="control-label"></label>
+                <input asp-for="Suspension" class="form-control" />
+                <span asp-validation-for="Suspension" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wheels" class="control-label"></label>
+                <input asp-for="Wheels" class="form-control" />
+                <span asp-validation-for="Wheels" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lighting" class="control-label"></label>
+                <input asp-for="Lighting" class="form-control" />
+                <span asp-validation-for="Lighting" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarbonDioxideContent" class="control-label"></label>
+                <input asp-for="CarbonDioxideContent" class="form-control" />
+                <span asp-validation-for="CarbonDioxideContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InspectorId" class="control-label"></label>
+                <input asp-for="InspectorId" class="form-control" />
+                <span asp-validation-for="InspectorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarId" class="control-label"></label>
+                <input asp-for="CarId" class="form-control" />
+                <span asp-validation-for="CarId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InspectionMark" class="control-label"></label>
+                <input asp-for="InspectionMark" class="form-control" />
+                <span asp-validation-for="InspectionMark" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

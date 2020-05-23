@@ -35,19 +35,24 @@ namespace ConsoleApp
                 Console.WriteLine("1. Add inspector");
                 Console.WriteLine("2. Update inspector");
                 Console.WriteLine("3. Delete inspector");
+                Console.WriteLine();
                 Console.WriteLine("4. Add car");
                 Console.WriteLine("5. Update car");
                 Console.WriteLine("6. Delete car");
+                Console.WriteLine();
                 Console.WriteLine("7. Add owner");
                 Console.WriteLine("8. Update owner");
                 Console.WriteLine("9. Delete owner");
+                Console.WriteLine();
                 Console.WriteLine("10. Create order");
                 Console.WriteLine("11. Update order");
                 Console.WriteLine("12. Delete order");
+                Console.WriteLine();
                 Console.WriteLine("13. Show inspectors");
                 Console.WriteLine("14. Show cars");
                 Console.WriteLine("15. Show owners");
                 Console.WriteLine("16. Show orders");
+                Console.WriteLine();
                 Console.WriteLine("0. Exit");
 
                 numOfMenu = Convert.ToInt32(Console.ReadLine());

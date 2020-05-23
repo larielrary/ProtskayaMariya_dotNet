@@ -27,7 +27,7 @@ namespace ConsoleApp
                     loggingBuilder.AddNLog(configuration);
                 })
                 .AddDbContext<ServiceStationContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
-                .AddTransient(typeof(IRepository<>), typeof(ServiceStationRepository<>))
+                .AddTransient(typeof(IRepository<>), typeof(GenericRepository<>))
                 .Scan(scan => scan
                     .FromAssemblies(businessLayer, presentationLayer)
                     .AddClasses(classes => classes.Where(type => type.Name.EndsWith("Service")))

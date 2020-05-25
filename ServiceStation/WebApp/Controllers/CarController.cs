@@ -41,12 +41,12 @@ namespace WebApp.Controllers
                     OwnerId = Convert.ToInt32(collection["OwnerId"])
                 };
                 await _carService.Create(car);
-                _logger.LogInformation($"The {nameof(Car)} creation was successful.");
+                _logger.LogInformation("Creation was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(Car)} creation failed.", ex);
+                _logger.LogError("Creation failed.", ex);
                 return View();
             }
         }
@@ -73,19 +73,18 @@ namespace WebApp.Controllers
                     OwnerId = Convert.ToInt32(collection["OwnerId"])
                 };
                 await _carService.Update(car);
-                _logger.LogInformation($"The {nameof(Car)} editing was successful. Id = {id}.");
+                _logger.LogInformation("Editing was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(Car)} editing failed.", ex);
+                _logger.LogError("Editing failed.", ex);
                 return View();
             }
         }
         public async Task<IActionResult> Delete(int id)
         {
-            await _carService.GetItem(id);
-            return View();
+            return View(await _carService.GetItem(id));
         }
 
         [HttpPost]
@@ -95,12 +94,12 @@ namespace WebApp.Controllers
             try
             {
                 await _carService.Delete(id);
-                _logger.LogInformation($"The {nameof(Car)} editing was successful. Id = {id}.");
+                _logger.LogInformation("Delete was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(Car)} deleting failed.", ex);
+                _logger.LogError("Delete failed.", ex);
                 return View();
             }
         }

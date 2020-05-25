@@ -40,20 +40,19 @@ namespace WebApp.Controllers
                     Salary = Convert.ToDouble(collection["Salary"])
                 };
                 await _inspectorService.Create(inspector);
-                _logger.LogInformation($"The {nameof(Inspector)} creation was successful.");
+                _logger.LogInformation("Creation was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(Inspector)} creation failed.", ex);
+                _logger.LogError("Creation failed.", ex);
                 return View();
             }
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            await _inspectorService.GetItem(id);
-            return View();
+            return View(await _inspectorService.GetItem(id));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -71,19 +70,18 @@ namespace WebApp.Controllers
                     Salary = Convert.ToDouble(collection["Salary"])
                 };
                 await _inspectorService.Update(owner);
-                _logger.LogInformation($"The {nameof(Inspector)} editing was successful. Id = {id}.");
+                _logger.LogInformation("Editing was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(Inspector)} editing failed.", ex);
+                _logger.LogError("Editing failed.", ex);
                 return View();
             }
         }
         public async Task<IActionResult> Delete(int id)
         {
-            await _inspectorService.GetItem(id);
-            return View();
+            return View(await _inspectorService.GetItem(id));
         }
 
         [HttpPost]
@@ -93,12 +91,12 @@ namespace WebApp.Controllers
             try
             {
                 await _inspectorService.Delete(id);
-                _logger.LogInformation($"The {nameof(Inspector)} editing was successful. Id = {id}.");
+                _logger.LogInformation("Delete was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(Inspector)} deleting failed.", ex);
+                _logger.LogError("Delete failed.", ex);
                 return View();
             }
         }

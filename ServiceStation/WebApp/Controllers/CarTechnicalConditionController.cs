@@ -1,7 +1,7 @@
 ﻿using BusinessLayer.Models.DTO;
 using BusinessLayer.Services.ServiceStationService;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
@@ -46,20 +46,19 @@ namespace WebApp.Controllers
                     InspectionMark = Convert.ToBoolean(collection["InspectionMark"])
                 };
                 await _conditionService.Create(condition);
-                _logger.LogInformation($"The {nameof(CarTechnicalCondition)} creation was successful.");
+                _logger.LogInformation("Creation was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(CarTechnicalCondition)} creation failed.", ex);
+                _logger.LogError("Creation failed.", ex);
                 return View();
             }
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            await _conditionService.GetItem(id);
-            return View();
+            return View(await _conditionService.GetItem(id));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -82,19 +81,18 @@ namespace WebApp.Controllers
                     InspectionMark = Convert.ToBoolean(collection["InspectionMark"])
                 };
                 await _conditionService.Update(condition);
-                _logger.LogInformation($"The {nameof(CarTechnicalCondition)} editing was successful. Id = {id}.");
+                _logger.LogInformation("Editing was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(CarTechnicalCondition)} editing failed.", ex);
+                _logger.LogError("Editing failed.", ex);
                 return View();
             }
         }
         public async Task<IActionResult> Delete(int id)
         {
-            await _conditionService.GetItem(id);
-            return View();
+            return View(await _conditionService.GetItem(id));
         }
 
         [HttpPost]
@@ -104,12 +102,12 @@ namespace WebApp.Controllers
             try
             {
                 await _conditionService.Delete(id);
-                _logger.LogInformation($"The {nameof(CarTechnicalCondition)} editing was successful. Id = {id}.");
+                _logger.LogInformation("Delete was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(CarTechnicalCondition)} deleting failed.", ex);
+                _logger.LogError("Delete failed.", ex);
                 return View();
             }
         }

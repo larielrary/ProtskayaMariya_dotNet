@@ -39,20 +39,19 @@ namespace WebApp.Controllers
                     PhoneNum = collection["PhoneNum"]
                 };
                 await _ownerService.Create(owner);
-                _logger.LogInformation($"The {nameof(Owner)} creation was successful.");
+                _logger.LogInformation("Creation was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(Owner)} creation failed.", ex);
+                _logger.LogError("Creation failed.", ex);
                 return View();
             }
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            await _ownerService.GetItem(id);
-            return View();
+            return View(await _ownerService.GetItem(id));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -69,19 +68,18 @@ namespace WebApp.Controllers
                     PhoneNum = collection["PhoneNum"]
                 };
                 await _ownerService.Update(owner);
-                _logger.LogInformation($"The {nameof(Owner)} editing was successful. Id = {id}.");
+                _logger.LogInformation("Eediting was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(Owner)} editing failed.", ex);
+                _logger.LogError("Editing failed.", ex);
                 return View();
             }
         }
         public async Task<IActionResult> Delete(int id)
         {
-            await _ownerService.GetItem(id);
-            return View();
+            return View(await _ownerService.GetItem(id));
         }
 
         [HttpPost]
@@ -91,12 +89,12 @@ namespace WebApp.Controllers
             try
             {
                 await _ownerService.Delete(id);
-                _logger.LogInformation($"The {nameof(Owner)} editing was successful. Id = {id}.");
+                _logger.LogInformation("Delete was successful.");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError($"The {nameof(Owner)} deleting failed.", ex);
+                _logger.LogError("Delete failed.", ex);
                 return View();
             }
         }

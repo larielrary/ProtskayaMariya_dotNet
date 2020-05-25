@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Models.DTO;
 using BusinessLayer.Services.ServiceStationService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,21 +13,27 @@ namespace WebApp.Controllers
     {
         private readonly CarService _carService;
         private readonly ILogger<CarController> _logger;
+
         public CarController(CarService carService, ILogger<CarController> logger)
         {
             _carService = carService;
             _logger = logger;
         }
+
         public async Task<IActionResult> Index()
         {
             return View(await _carService.GetItems());
         }
+
+        [Authorize(Roles = StaticData.Admin)]
         public ActionResult Create()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = StaticData.Admin)]
         public async Task<IActionResult> Create(IFormCollection collection)
         {
             try
@@ -51,13 +58,16 @@ namespace WebApp.Controllers
             }
         }
 
+        [Authorize(Roles = StaticData.Admin)]
         public async Task<IActionResult> Edit(int id)
         {
             await _carService.GetItem(id);
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = StaticData.Admin)]
         public async Task<IActionResult> Edit(int id, IFormCollection collection)
         {
             try
@@ -82,6 +92,8 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+
+        [Authorize(Roles = StaticData.Admin)]
         public async Task<IActionResult> Delete(int id)
         {
             return View(await _carService.GetItem(id));
@@ -89,6 +101,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = StaticData.Admin)]
         public async Task<IActionResult> DeleteById(int id)
         {
             try

@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Models.DTO;
 using BusinessLayer.ServiceStationService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,21 +13,27 @@ namespace WebApp.Controllers
     {
         private readonly OwnerService _ownerService;
         private readonly ILogger<OwnerController> _logger;
+
         public OwnerController(OwnerService inspectorService, ILogger<OwnerController> logger)
         {
             _ownerService = inspectorService;
             _logger = logger;
         }
+
         public async Task<IActionResult> Index()
         {
             return View(await _ownerService.GetItems());
         }
+
+        [Authorize(Roles = StaticData.Admin)]
         public ActionResult Create()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = StaticData.Admin)]
         public async Task<IActionResult> Create(IFormCollection collection)
         {
             try
@@ -49,12 +56,15 @@ namespace WebApp.Controllers
             }
         }
 
+        [Authorize(Roles = StaticData.Admin)]
         public async Task<IActionResult> Edit(int id)
         {
             return View(await _ownerService.GetItem(id));
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = StaticData.Admin)]
         public async Task<IActionResult> Edit(int id, IFormCollection collection)
         {
             try
@@ -77,6 +87,8 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+
+        [Authorize(Roles = StaticData.Admin)]
         public async Task<IActionResult> Delete(int id)
         {
             return View(await _ownerService.GetItem(id));
@@ -84,6 +96,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = StaticData.Admin)]
         public async Task<IActionResult> DeleteById(int id)
         {
             try
@@ -100,4 +113,3 @@ namespace WebApp.Controllers
         }
     }
 }
- 

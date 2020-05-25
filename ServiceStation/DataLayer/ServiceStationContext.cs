@@ -1,9 +1,11 @@
 ﻿using DataLayer.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace DataLayer
 {
-    public class ServiceStationContext : DbContext
+    public class ServiceStationContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<CarDTO> Cars { get; set; }
         public DbSet<CarTechnicalConditionDTO> CarTechnicalConditions { get; set; }

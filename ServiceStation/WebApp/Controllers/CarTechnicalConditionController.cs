@@ -25,7 +25,7 @@ namespace WebApp.Controllers
             return View(await _conditionService.GetItems());
         }
 
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -33,7 +33,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create(IFormCollection collection)
         {
             try
@@ -62,7 +62,7 @@ namespace WebApp.Controllers
             }
         }
 
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(int id)
         {
             return View(await _conditionService.GetItem(id));
@@ -70,7 +70,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(int id, IFormCollection collection)
         {
             try
@@ -100,7 +100,7 @@ namespace WebApp.Controllers
             }
         }
 
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int id)
         {
             return View(await _conditionService.GetItem(id));
@@ -108,7 +108,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteById(int id)
         {
             try

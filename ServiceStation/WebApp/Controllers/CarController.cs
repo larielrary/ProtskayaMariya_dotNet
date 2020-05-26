@@ -25,7 +25,7 @@ namespace WebApp.Controllers
             return View(await _carService.GetItems());
         }
 
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -33,7 +33,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create(IFormCollection collection)
         {
             try
@@ -58,7 +58,7 @@ namespace WebApp.Controllers
             }
         }
 
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(int id)
         {
             await _carService.GetItem(id);
@@ -67,7 +67,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(int id, IFormCollection collection)
         {
             try
@@ -93,7 +93,7 @@ namespace WebApp.Controllers
             }
         }
 
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int id)
         {
             return View(await _carService.GetItem(id));
@@ -101,7 +101,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = StaticData.Admin)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteById(int id)
         {
             try

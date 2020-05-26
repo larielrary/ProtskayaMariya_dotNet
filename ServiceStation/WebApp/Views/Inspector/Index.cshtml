@@ -44,7 +44,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Salary)
             </td>
-            @if (SignInManager.IsSignedIn(User) && User.IsInRole(StaticData.Admin))
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("admin"))
             {
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

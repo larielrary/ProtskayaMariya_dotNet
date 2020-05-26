@@ -1,3 +1,4 @@
+using DataLayer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,9 +22,10 @@ namespace WebApp
                     var services = scope.ServiceProvider;
                     try
                     {
+                        var context = services.GetRequiredService<ServiceStationContext>();
                         var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
                         var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                        await IdentityInitializer.InitializeAsync(userManager, rolesManager);
+                        await IdentityInitializer.InitializeAsync(userManager, rolesManager, context);
                     }
                     catch (Exception ex)
                     {

@@ -1,21 +1,24 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using DataLayer;
+using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 
 namespace WebApp
 {
     public class IdentityInitializer
     {
-        public static async Task InitializeAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task InitializeAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, ServiceStationContext serviceStationContext)
         {
-            string email = StaticData.Email;
-            string password = StaticData.Password;
-            if (await roleManager.FindByNameAsync(StaticData.Admin) == null)
+            string email = "mashaprotskaya@gmail.com";
+            string password = "pass";
+            if (await roleManager.FindByNameAsync("admin") == null)
             {
-                await roleManager.CreateAsync(new IdentityRole(StaticData.Admin));
+                await roleManager.CreateAsync(new IdentityRole("admin"));
+                serviceStationContext.SaveChanges();
             }
-            if (await roleManager.FindByNameAsync(StaticData.Worker) == null)
+            if (await roleManager.FindByNameAsync("user") == null)
             {
-                await roleManager.CreateAsync(new IdentityRole(StaticData.Worker));
+                await roleManager.CreateAsync(new IdentityRole("user"));
+                serviceStationContext.SaveChanges();
             }
             if (await userManager.FindByNameAsync(email) == null)
             {
@@ -23,7 +26,8 @@ namespace WebApp
                 IdentityResult result = await userManager.CreateAsync(admin, password);
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(admin, StaticData.Admin);
+                    await userManager.AddToRoleAsync(admin, "admin");
+                    serviceStationContext.SaveChanges();
                 }
             }
         }

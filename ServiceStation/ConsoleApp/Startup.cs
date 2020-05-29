@@ -31,7 +31,7 @@ namespace ConsoleApp
                 .Scan(scan => scan
                     .FromAssemblies(businessLayer, presentationLayer)
                     .AddClasses(classes => classes.Where(type => type.Name.EndsWith("Service")))
-                    .AddClasses(classes => classes.Where(type => type.Name.StartsWith("Menu")))
+                    .AddClasses(classes => classes.Where(type => type.Name.EndsWith("ConsoleService")))
                     .AsSelf()
                     .WithTransientLifetime())
                 .AddAutoMapper(typeof(ServiceStationProfile))

@@ -1,27 +1,26 @@
 ﻿@model IEnumerable<BusinessLayer.Models.DTO.Car>
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CarNumber)
+                Car Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CarModel)
+                Car Model
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EngineCapacity)
+                Engine Capacity
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BodyNubmer)
+                BodyNubmer
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.YearOfProduction)
+                Year Of Production
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OwnerId)
+                Owner Id
             </th>
             <th></th>
         </tr>
@@ -29,30 +28,18 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CarNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CarModel)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EngineCapacity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BodyNubmer)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.YearOfProduction)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OwnerId)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td asp-display-for="@item.CarNumber"></td>
+            <td asp-display-for="@item.CarModel"></td>
+            <td asp-display-for="@item.EngineCapacity"></td>
+            <td asp-display-for="@item.BodyNubmer"></td>
+            <td asp-display-for="@item.YearOfProduction"></td>
+            <td asp-display-for="@item.OwnerId"></td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

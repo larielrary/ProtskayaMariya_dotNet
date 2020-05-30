@@ -1,41 +1,40 @@
 ﻿@model BusinessLayer.Models.DTO.Car
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <h3>Are you sure?</h3>
 <div>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            <label asp-for="CarNumber"></label>
+            <label asp-display-for="CarNumber"></label>
         </dt>
         <dd class="col-sm-10">
             @Model.CarNumber
         </dd>
         <dt class="col-sm-2">
-            <label asp-for="CarModel"></label>
+            <label asp-display-for="CarModel"></label>
         </dt>
         <dd class="col-sm-10">
             @Model.CarModel
         </dd>
         <dt class="col-sm-2">
-            <label asp-for="EngineCapacity"></label>
+            <label asp-display-for="EngineCapacity"></label>
         </dt>
         <dd class="col-sm-10">
             @Model.EngineCapacity
         </dd>
         <dt class="col-sm-2">
-            <label asp-for="BodyNubmer"></label>
+            <label asp-display-for="BodyNubmer"></label>
         </dt>
         <dd class="col-sm-10">
             @Model.BodyNubmer
         </dd>
         <dt class="col-sm-2">
-            <label asp-for="YearOfProduction"></label>
+            <label asp-display-for="YearOfProduction"></label>
         </dt>
         <dd class="col-sm-10">
             @Model.YearOfProduction
         </dd>
         <dt class="col-sm-2">
-            <label asp-for="OwnerId"></label>
+            <label asp-display-for="OwnerId"></label>
         </dt>
         <dd class="col-sm-10">
             @Model.OwnerId

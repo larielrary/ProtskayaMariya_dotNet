@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BusinessLayer.Models.DTO.CarTechnicalCondition>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Milleage
+            </th>
+            <th>
+                Break System
+            </th>
+            <th>
+                Suspension
+            </th>
+            <th>
+                Wheels
+            </th>
+            <th>
+                Lighting
+            </th>
+            <th>
+                Carbon Dioxide Content
+            </th>
+            <th>
+                Inspector Id
+            </th>
+            <th>
+                Car Id
+            </th>
+            <th>
+                Inspection Mark
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td asp-display-for="@item.Date"></td>
+            <td asp-display-for="@item.Milleage"></td>
+            <td asp-display-for="@item.BreakSystem"></td>
+            <td asp-display-for="@item.Suspension"></td>
+            <td asp-display-for="@item.Wheels"></td>
+            <td asp-display-for="@item.Lighting"></td>
+            <td asp-display-for="@item.CarbonDioxideContent"></td>
+            <td asp-display-for="@item.InspectorId"></td>
+            <td asp-display-for="@item.CarId"></td>
+            <td asp-display-for="@item.InspectionMark"></td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Create</a>
+</p>

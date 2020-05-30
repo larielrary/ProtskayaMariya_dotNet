@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BusinessLayer.Models.DTO.Owner>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Firstname
+            </th>
+            <th>
+                LastName
+            </th>
+            <th>
+                MiddleName
+            </th>
+            <th>
+                PhoneNum
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td asp-display-for="@item.Firstname"></td>
+            <td asp-display-for="@item.LastName"></td>
+            <td asp-display-for="@item.MiddleName"></td>
+            <td asp-display-for="@item.PhoneNum"></td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Create</a>
+</p>

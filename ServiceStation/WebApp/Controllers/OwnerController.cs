@@ -12,19 +12,23 @@ namespace WebApp.Controllers
     {
         private readonly OwnerService _ownerService;
         private readonly ILogger<OwnerController> _logger;
+        
         public OwnerController(OwnerService inspectorService, ILogger<OwnerController> logger)
         {
             _ownerService = inspectorService;
             _logger = logger;
         }
+        
         public async Task<IActionResult> Index()
         {
             return View(await _ownerService.GetItems());
         }
+        
         public ActionResult Create()
         {
             return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(IFormCollection collection)
@@ -53,6 +57,7 @@ namespace WebApp.Controllers
         {
             return View(await _ownerService.GetItem(id));
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, IFormCollection collection)
@@ -77,6 +82,7 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+        
         public async Task<IActionResult> Delete(int id)
         {
             return View(await _ownerService.GetItem(id));

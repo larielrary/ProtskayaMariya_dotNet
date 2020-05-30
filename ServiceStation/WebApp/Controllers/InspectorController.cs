@@ -12,19 +12,23 @@ namespace WebApp.Controllers
     {
         private readonly InspectorService _inspectorService;
         private readonly ILogger<InspectorController> _logger;
+        
         public InspectorController(InspectorService inspectorService, ILogger<InspectorController> logger)
         {
             _inspectorService = inspectorService;
             _logger = logger;
         }
+        
         public async Task<IActionResult> Index()
         {
             return View(await _inspectorService.GetItems());
         }
+        
         public ActionResult Create()
         {
             return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(IFormCollection collection)
@@ -54,6 +58,7 @@ namespace WebApp.Controllers
         {
             return View(await _inspectorService.GetItem(id));
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, IFormCollection collection)
@@ -79,6 +84,7 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+        
         public async Task<IActionResult> Delete(int id)
         {
             return View(await _inspectorService.GetItem(id));

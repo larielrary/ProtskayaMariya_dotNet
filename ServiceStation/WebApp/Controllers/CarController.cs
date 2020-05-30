@@ -12,19 +12,23 @@ namespace WebApp.Controllers
     {
         private readonly CarService _carService;
         private readonly ILogger<CarController> _logger;
+        
         public CarController(CarService carService, ILogger<CarController> logger)
         {
             _carService = carService;
             _logger = logger;
         }
+        
         public async Task<IActionResult> Index()
         {
             return View(await _carService.GetItems());
         }
+        
         public ActionResult Create()
         {
             return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(IFormCollection collection)
@@ -56,6 +60,7 @@ namespace WebApp.Controllers
             await _carService.GetItem(id);
             return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, IFormCollection collection)
@@ -82,11 +87,12 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+        
         public async Task<IActionResult> Delete(int id)
         {
             return View(await _carService.GetItem(id));
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteById(int id)

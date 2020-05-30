@@ -12,15 +12,18 @@ namespace WebApp.Controllers
     {
         private readonly CarTechnicalConditionService _conditionService;
         private readonly ILogger<CarTechnicalConditionController> _logger;
+        
         public CarTechnicalConditionController(CarTechnicalConditionService carService, ILogger<CarTechnicalConditionController> logger)
         {
             _conditionService = carService;
             _logger = logger;
         }
+        
         public async Task<IActionResult> Index()
         {
             return View(await _conditionService.GetItems());
         }
+        
         public ActionResult Create()
         {
             return View();
@@ -60,6 +63,7 @@ namespace WebApp.Controllers
         {
             return View(await _conditionService.GetItem(id));
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, IFormCollection collection)
@@ -90,6 +94,7 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+        
         public async Task<IActionResult> Delete(int id)
         {
             return View(await _conditionService.GetItem(id));

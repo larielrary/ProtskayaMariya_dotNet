@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ConsoleApp.ConsoleService;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using System;
@@ -19,8 +20,8 @@ namespace ConsoleApp
                     .AddJsonFile("appsettings.json");
                 var config = builder.Build();
                 var services = Startup.Configure(config);
-                var mainPresentation = services.GetService<Menu>();
-                await mainPresentation.Start();
+                var mainPresentation = services.GetService<StartMenuConsoleService>();
+                await mainPresentation.StartMenu();
             }
             catch (Exception ex)
             {

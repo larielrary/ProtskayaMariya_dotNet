@@ -9,16 +9,16 @@ namespace ConsoleApp
 {
     public class Menu
     {
-        private readonly CarService car;
+        private readonly CarsService car;
 
-        private readonly CarTechnicalConditionService carCondition;
+        private readonly CarTechnicalConditionsService carCondition;
 
-        private readonly OwnerService owner;
+        private readonly OwnersService owner;
 
-        private readonly InspectorService inspector;
+        private readonly InspectorsService inspector;
 
-        public Menu(CarService car, CarTechnicalConditionService carCondition,
-                                OwnerService owner, InspectorService inspector)
+        public Menu(CarsService car, CarTechnicalConditionsService carCondition,
+                                OwnersService owner, InspectorsService inspector)
         {
             this.car = car;
             this.carCondition = carCondition;

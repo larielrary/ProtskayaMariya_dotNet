@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "LR1": {
-      "commandName": "Project",
-      "commandLineArgs": "-i 6_TestFile.csv -o 6 -f json"
-    }
-  }
-}

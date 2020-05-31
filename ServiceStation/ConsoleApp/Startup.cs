@@ -19,6 +19,7 @@ namespace ConsoleApp
             var presentationLayer = Assembly.Load("ConsoleApp");
 
             return new ServiceCollection()
+                .AddTransient<Runner>()
                 .AddLogging(loggingBuilder =>
                 {
                     loggingBuilder.ClearProviders();
@@ -26,11 +27,11 @@ namespace ConsoleApp
                     loggingBuilder.AddNLog(configuration);
                 })
                 .AddDbContext<ServiceStationContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
-                .AddTransient(typeof(IRepository<>), typeof(GenericRepository<>))
+                .AddTransient(typeof(IRepository<>), typeof(ServiceStationRepository<>))
                 .Scan(scan => scan
                     .FromAssemblies(businessLayer, presentationLayer)
                     .AddClasses(classes => classes.Where(type => type.Name.EndsWith("Service")))
-                    .AddClasses(classes => classes.Where(type => type.Name.EndsWith("ConsoleService")))
+                    .AddClasses(classes => classes.Where(type => type.Name.StartsWith("Menu")))
                     .AsSelf()
                     .WithTransientLifetime())
                 .AddAutoMapper(typeof(ServiceStationProfile))

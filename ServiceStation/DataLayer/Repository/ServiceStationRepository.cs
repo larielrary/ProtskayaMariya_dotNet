@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repository
 {
-    public class GenericRepository<T> : IRepository<T> where T : class, IEntity
+    public class ServiceStationRepository<T> : IRepository<T> where T : class, IEntity
     {
         private readonly ServiceStationContext serviceStationContext;
 
-        public GenericRepository(ServiceStationContext context)
+        public ServiceStationRepository(ServiceStationContext context)
         {
             serviceStationContext = context;
         }

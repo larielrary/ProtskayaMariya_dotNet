@@ -2,7 +2,7 @@
 
 namespace DataLayer.Models
 {
-    public class CarDTO:IEntity
+    public class CarDTO : IEntity
     {
         public int Id { get; set; }
         public string CarNumber { get; set; }
@@ -10,6 +10,6 @@ namespace DataLayer.Models
         public double EngineCapacity { get; set; }
         public string BodyNubmer { get; set; }
         public int YearOfProduction { get; set; }
-        public int OwnerId { get; set; }    
+        public int OwnerId { get; set; }
     }
 }

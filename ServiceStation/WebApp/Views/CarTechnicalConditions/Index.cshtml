@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BusinessLayer.Models.DTO.CarTechnicalCondition>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label asp-display-for="First().Date"></label>
+            </th>
+            <th>
+                <label asp-display-for="First().Milleage"></label>
+            </th>
+            <th>
+                <label asp-display-for="First().BreakSystem"></label>
+            </th>
+            <th>
+                <label asp-display-for="First().Suspension"></label>
+            </th>
+            <th>
+                <label asp-display-for="First().Wheels"></label>
+            </th>
+            <th>
+                <label asp-display-for="First().Lighting"></label>
+            </th>
+            <th>
+                <label asp-display-for="First().CarbonDioxideContent"></label>
+            </th>
+            <th>
+                <label asp-display-for="First().InspectorId"></label>
+            </th>
+            <th>
+                <label asp-display-for="First().CarId"></label>
+            </th>
+            <th>
+                <label asp-display-for="First().InspectionMark"></label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td asp-display-for="@item.Date"></td>
+            <td asp-display-for="@item.Milleage"></td>
+            <td asp-display-for="@item.BreakSystem"></td>
+            <td asp-display-for="@item.Suspension"></td>
+            <td asp-display-for="@item.Wheels"></td>
+            <td asp-display-for="@item.Lighting"></td>
+            <td asp-display-for="@item.CarbonDioxideContent"></td>
+            <td asp-display-for="@item.InspectorId"></td>
+            <td asp-display-for="@item.CarId"></td>
+            <td asp-display-for="@item.InspectionMark"></td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+            
+        </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Create</a>
+</p>

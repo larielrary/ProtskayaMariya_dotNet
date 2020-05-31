@@ -1,36 +1,33 @@
 ﻿using DataLayer.Entity;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
 
 namespace BusinessLayer.Models.DTO
 {
-    [DataContract]
     public class CarTechnicalCondition : IEntity
     {
-        [Key]
-        [DataMember]
         public int Id { get; set; }
-        [DataMember]
+        [Required]
         public DateTime Date { get; set; }
-        [DataMember]
+        [Required]
         public double Milleage { get; set; }
-        [DataMember]
+        [Required]
         public bool BreakSystem { get; set; }
-        [DataMember]
+        [Required]
         public bool Suspension { get; set; }
-        [DataMember]
+        [Required]
         public bool Wheels { get; set; }
-        [DataMember]
+        [Required]
         public bool Lighting { get; set; }
-        [DataMember]
+        [Required]
         public double CarbonDioxideContent { get; set; }
-        [DataMember]
+        [Required]
         public int InspectorId { get; set; }
-        [DataMember]
+        [Required]
         public int CarId { get; set; }
-        [DataMember]
+        [Required]
         public bool InspectionMark { get; set; }
+        
         public override string ToString()
         {
             return $"{Id} {Date} {Milleage} {BreakSystem} {Suspension} {Wheels} {Lighting} {CarbonDioxideContent} {InspectorId} {CarId} {InspectionMark}";

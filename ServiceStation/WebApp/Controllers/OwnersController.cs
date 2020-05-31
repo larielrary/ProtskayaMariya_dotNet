@@ -12,25 +12,25 @@ namespace WebApp.Controllers
     {
         private readonly OwnersService _ownerService;
         private readonly ILogger<OwnersController> _logger;
-        
+
         public OwnersController(OwnersService inspectorService, ILogger<OwnersController> logger)
         {
             _ownerService = inspectorService;
             _logger = logger;
         }
-        
+
         public async Task<IActionResult> Index()
         {
             return View(await _ownerService.GetItems());
         }
-        
+         
         public ActionResult Create()
         {
             return View();
         }
-        
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] 
         public async Task<IActionResult> Create(IFormCollection collection)
         {
             try
@@ -52,14 +52,14 @@ namespace WebApp.Controllers
                 return View();
             }
         }
-
+         
         public async Task<IActionResult> Edit(int id)
         {
             return View(await _ownerService.GetItem(id));
         }
-        
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] 
         public async Task<IActionResult> Edit(int id, IFormCollection collection)
         {
             try
@@ -82,14 +82,14 @@ namespace WebApp.Controllers
                 return View();
             }
         }
-        
+         
         public async Task<IActionResult> Delete(int id)
         {
             return View(await _ownerService.GetItem(id));
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] 
         public async Task<IActionResult> DeleteById(int id)
         {
             try
@@ -106,4 +106,3 @@ namespace WebApp.Controllers
         }
     }
 }
- 

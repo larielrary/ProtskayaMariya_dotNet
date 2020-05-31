@@ -1,23 +1,20 @@
 ﻿using DataLayer.Entity;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
 
 namespace BusinessLayer.Models.DTO
 {
-    [DataContract]
     public class Owner : IEntity
     {
-        [Key]
-        [DataMember]
         public int Id { get; set; }
-        [DataMember]
+        [Required]
         public string Firstname { get; set; }
-        [DataMember]
+        [Required]
         public string LastName { get; set; }
-        [DataMember]
+        [Required]
         public string MiddleName { get; set; }
-        [DataMember]
+        [Required]
         public string PhoneNum { get; set; }
+        
         public override string ToString()
         {
             return $"{Id} {Firstname} {LastName} {MiddleName} {PhoneNum}";

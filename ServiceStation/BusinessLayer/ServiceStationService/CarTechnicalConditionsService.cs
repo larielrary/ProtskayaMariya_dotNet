@@ -16,7 +16,6 @@ namespace BusinessLayer.Services.ServiceStationService
         private readonly IRepository<InspectorDTO> _inspectorRepository;
         private readonly IMapper _mapper;
 
-
         public CarTechnicalConditionsService(IRepository<CarTechnicalConditionDTO> conditionRepository,
             IRepository<CarDTO> carRepository, IRepository<InspectorDTO> inspectorRepository, IMapper mapper)
         {
@@ -28,28 +27,9 @@ namespace BusinessLayer.Services.ServiceStationService
 
         public async Task<CarTechnicalCondition> GetItem(int id)
         {
-            var condition = await _conditionRepository.GetById(id);
-
-            if (condition == null)
-            {
-                throw new ArgumentNullException(nameof(condition));
-            }
-
-            return new CarTechnicalCondition
-            {
-                Id = condition.Id,
-                Date = condition.Date,
-                Milleage = condition.Milleage,
-                BreakSystem = condition.BreakSystem,
-                Suspension = condition.Suspension,
-                Wheels = condition.Wheels,
-                Lighting = condition.Lighting,
-                CarbonDioxideContent = condition.CarbonDioxideContent,
-                InspectorId = condition.InspectorId,
-                CarId = condition.CarId,
-                InspectionMark = condition.InspectionMark
-            };
+            return _mapper.Map<CarTechnicalCondition>(await _conditionRepository.GetById(id));
         }
+
         public async Task<IEnumerable<CarTechnicalCondition>> GetItems()
         {
             return _mapper.Map<IEnumerable<CarTechnicalConditionDTO>, List<CarTechnicalCondition>>(await _conditionRepository.GetAll());
@@ -59,7 +39,7 @@ namespace BusinessLayer.Services.ServiceStationService
         {
             if (condition == null)
             {
-                throw new ArgumentNullException(nameof(condition));
+                throw new InvalidOperationException(nameof(condition));
             }
             else
             {
@@ -70,7 +50,7 @@ namespace BusinessLayer.Services.ServiceStationService
                 }
                 catch
                 {
-                    throw new ArgumentNullException();
+                    throw new InvalidOperationException();
                 }
                 await _conditionRepository.Add(_mapper.Map<CarTechnicalConditionDTO>(condition));
             }
@@ -80,7 +60,7 @@ namespace BusinessLayer.Services.ServiceStationService
         {
             if (condition == null)
             {
-                throw new ArgumentNullException(nameof(condition));
+                throw new InvalidOperationException(nameof(condition));
             }
             else
             {
@@ -90,15 +70,8 @@ namespace BusinessLayer.Services.ServiceStationService
 
         public async Task Delete(int id)
         {
-            var condition = GetItems().Result.Where(el => el.Id == id).ToList();
-            if (condition == null)
-            {
-                throw new ArgumentNullException(nameof(condition));
-            }
-            else
-            {
-                await _conditionRepository.Delete(_mapper.Map<CarTechnicalConditionDTO>(condition[0]).Id);
-            }
+            var condition = (await GetItems()).Single(el => el.Id == id);
+            await _conditionRepository.Delete(_mapper.Map<CarTechnicalConditionDTO>(condition).Id);
         }
     }
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD:ServiceStation/WebApp/Controllers/CarTechnicalConditionsController.cs
 ﻿using BusinessLayer.Models.DTO;
 using BusinessLayer.Services.ServiceStationService;
 using Microsoft.AspNetCore.Http;
@@ -119,6 +118,7 @@ namespace WebApp.Controllers
         }
     }
 }
+<<<<<<< HEAD
 =======
 ﻿using BusinessLayer.Models.DTO;
 using BusinessLayer.Services.ServiceStationService;
@@ -241,3 +241,5 @@ namespace WebApp.Controllers
     }
 }
 >>>>>>> c32c29b2864514de1a8b802a2d240f2a27a02096:ServiceStation/WebApp/Controllers/CarTechnicalConditionController.cs
+=======
+>>>>>>> parent of f7c69cf... Merge branch 'LR3' of https://github.com/larielrary/ProtskayaMariya_dotNet into LR3

@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using BusinessLayer.Services.Mapper;
 using DataLayer;
 using DataLayer.Repository;

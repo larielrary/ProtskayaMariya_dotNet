@@ -13,18 +13,29 @@ namespace BusinessLayer.ServiceStationService
     {
         private readonly IRepository<OwnerDTO> _ownerRepository;
         private readonly IMapper _mapper;
-        
         public OwnersService(IRepository<OwnerDTO> ownerRepository, IMapper mapper)
         {
             _ownerRepository = ownerRepository;
             _mapper = mapper;
         }
-
         public async Task<Owner> GetItem(int id)
         {
-            return _mapper.Map<Owner>(await _ownerRepository.GetById(id));
-        }
+            var owner = await _ownerRepository.GetById(id);
 
+            if (owner == null)
+            {
+                throw new ArgumentNullException(nameof(owner));
+            }
+
+            return new Owner
+            {
+                Id = owner.Id,
+                Firstname = owner.Firstname,
+                LastName = owner.LastName,
+                MiddleName = owner.MiddleName,
+                PhoneNum = owner.PhoneNum
+            };
+        }
         public async Task<IEnumerable<Owner>> GetItems()
         {
             return _mapper.Map<IEnumerable<OwnerDTO>, List<Owner>>(await _ownerRepository.GetAll());
@@ -34,7 +45,7 @@ namespace BusinessLayer.ServiceStationService
         {
             if (item == null)
             {
-                throw new InvalidOperationException(nameof(item));
+                throw new ArgumentNullException(nameof(item));
             }
             else
             {
@@ -46,7 +57,7 @@ namespace BusinessLayer.ServiceStationService
         {
             if (item == null)
             {
-                throw new InvalidOperationException(nameof(item));
+                throw new ArgumentNullException(nameof(item));
             }
             else
             {
@@ -56,8 +67,15 @@ namespace BusinessLayer.ServiceStationService
 
         public async Task Delete(int id)
         {
-            var item = (await GetItems()).Single(el => el.Id == id);
-            await _ownerRepository.Delete(_mapper.Map<OwnerDTO>(item).Id);
+            var item = GetItems().Result.Where(el => el.Id == id).ToList();
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+            else
+            {
+                await _ownerRepository.Delete(_mapper.Map<OwnerDTO>(item[0]).Id);
+            }
         }
     }
 }

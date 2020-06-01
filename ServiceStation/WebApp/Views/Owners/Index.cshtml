@@ -1,19 +1,19 @@
-﻿@model IEnumerable<BusinessLayer.Models.DTO.Owner>
+﻿@model IEnumerable<BusinessLayer.Models.Owner>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                <label asp-display-for="First().Firstname"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.Firstname)"></label>
             </th>
             <th>
-                <label asp-display-for="First().LastName"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.LastName)"></label>
             </th>
             <th>
-                <label asp-display-for="First().MiddleName"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.MiddleName)"></label>
             </th>
             <th>
-                <label asp-display-for="First().PhoneNum"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.PhoneNum)"></label>
             </th>
             <th></th>
         </tr>

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BusinessLayer.Models.DTO;
+using BusinessLayer.Models;
 using DataLayer.Models;
 using DataLayer.Repository;
 using System;

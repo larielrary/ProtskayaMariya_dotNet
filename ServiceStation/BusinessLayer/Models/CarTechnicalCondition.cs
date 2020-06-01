@@ -2,7 +2,7 @@ using DataLayer.Entity;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BusinessLayer.Models.DTO
+namespace BusinessLayer.Models
 {
     public class CarTechnicalCondition : IEntity
     {

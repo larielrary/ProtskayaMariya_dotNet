@@ -1,25 +1,25 @@
-﻿@model IEnumerable<BusinessLayer.Models.DTO.Car>
+﻿@model IEnumerable<BusinessLayer.Models.Car>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                <label asp-display-for="First().CarNumber"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.CarNumber)"></label>
             </th>
             <th>
-                <label asp-display-for="First().CarModel"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.CarModel)"></label>
             </th>
             <th>
-                <label asp-display-for="First().EngineCapacity"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.EngineCapacity)"></label>
             </th>
             <th>
-                <label asp-display-for="First().BodyNubmer"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.BodyNubmer)"></label>
             </th>
             <th>
-                <label asp-display-for="First().YearOfProduction"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.YearOfProduction)"></label>
             </th>
             <th>
-                <label asp-display-for="First().OwnerId"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.OwnerId)"></label>
             </th>
             <th></th>
         </tr>

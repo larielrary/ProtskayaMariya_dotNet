@@ -1,37 +1,37 @@
-﻿@model IEnumerable<BusinessLayer.Models.DTO.CarTechnicalCondition>
+﻿@model IEnumerable<BusinessLayer.Models.CarTechnicalCondition>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                <label asp-display-for="First().Date"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.Date)"></label>
             </th>
             <th>
-                <label asp-display-for="First().Milleage"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.Milleage)"></label>
             </th>
             <th>
-                <label asp-display-for="First().BreakSystem"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.BreakSystem)"></label>
             </th>
             <th>
-                <label asp-display-for="First().Suspension"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.Suspension)"></label>
             </th>
             <th>
-                <label asp-display-for="First().Wheels"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.Wheels)"></label>
             </th>
             <th>
-                <label asp-display-for="First().Lighting"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.Lighting)"></label>
             </th>
             <th>
-                <label asp-display-for="First().CarbonDioxideContent"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.CarbonDioxideContent)"></label>
             </th>
             <th>
-                <label asp-display-for="First().InspectorId"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.InspectorId)"></label>
             </th>
             <th>
-                <label asp-display-for="First().CarId"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.CarId)"></label>
             </th>
             <th>
-                <label asp-display-for="First().InspectionMark"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.InspectionMark)"></label>
             </th>
             <th></th>
         </tr>

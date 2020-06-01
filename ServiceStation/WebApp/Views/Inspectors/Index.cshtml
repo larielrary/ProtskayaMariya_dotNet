@@ -1,22 +1,22 @@
-﻿@model IEnumerable<BusinessLayer.Models.DTO.Inspector>
+﻿@model IEnumerable<BusinessLayer.Models.Inspector>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                <label asp-display-for="First().Firstname"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.Firstname)"></label>
             </th>
             <th>
-                <label asp-display-for="First().LastName"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.LastName)"></label>
             </th>
             <th>
-                <label asp-display-for="First().MiddleName"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.MiddleName)"></label>
             </th>
             <th>
-                <label asp-display-for="First().Position"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.Position)"></label>
             </th>
             <th>
-                <label asp-display-for="First().Salary"></label>
+                <label asp-display-for="@Html.DisplayNameFor(model => model.Salary)"></label>
             </th>
             <th></th>
         </tr>

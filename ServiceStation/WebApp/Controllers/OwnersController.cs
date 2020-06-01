@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Models.DTO;
+﻿using BusinessLayer.Models;
 using BusinessLayer.ServiceStationService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

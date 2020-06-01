@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Models.DTO;
+﻿using BusinessLayer.Models;
 using BusinessLayer.ServiceStationService;
 using ConsoleApp.Interfaces;
 using System;

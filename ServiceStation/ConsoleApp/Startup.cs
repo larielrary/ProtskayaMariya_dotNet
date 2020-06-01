@@ -19,7 +19,6 @@ namespace ConsoleApp
             var presentationLayer = Assembly.Load("ConsoleApp");
 
             return new ServiceCollection()
-                //.AddTransient<Runner>()
                 .AddLogging(loggingBuilder =>
                 {
                     loggingBuilder.ClearProviders();

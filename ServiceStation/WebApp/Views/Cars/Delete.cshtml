@@ -1,0 +1,49 @@
+﻿@model BusinessLayer.Models.Car
+<h3>Are you sure?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            <label asp-display-for="CarNumber"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CarNumber
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-display-for="CarModel"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CarModel
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-display-for="EngineCapacity"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.EngineCapacity
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-display-for="BodyNubmer"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.BodyNubmer
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-display-for="YearOfProduction"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.YearOfProduction
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-display-for="OwnerId"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.OwnerId
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteById">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

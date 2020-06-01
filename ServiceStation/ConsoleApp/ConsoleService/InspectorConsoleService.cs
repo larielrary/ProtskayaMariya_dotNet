@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Models.DTO;
+﻿using BusinessLayer.Models;
 using BusinessLayer.Services.ServiceStationService;
 using ConsoleApp.Interfaces;
 using System;
@@ -8,9 +8,9 @@ namespace ConsoleApp
 {
     public class InspectorConsoleService : IConsoleService, ICrudService<Inspector>
     {
-        private readonly InspectorService _inspectorService;
+        private readonly InspectorsService _inspectorService;
 
-        public InspectorConsoleService(InspectorService inspectorService)
+        public InspectorConsoleService(InspectorsService inspectorService)
         {
             _inspectorService = inspectorService;
         }

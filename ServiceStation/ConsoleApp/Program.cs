@@ -1,4 +1,4 @@
-﻿using ConsoleApp.ConsoleService;
+using ConsoleApp.ConsoleService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;

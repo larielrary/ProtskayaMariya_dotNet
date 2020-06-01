@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Models.DTO;
+﻿using BusinessLayer.Models;
 using BusinessLayer.ServiceStationService;
 using ConsoleApp.Interfaces;
 using System;
@@ -8,9 +8,9 @@ namespace ConsoleApp
 {
     public class OwnerConsoleService : IConsoleService, ICrudService<Owner>
     {
-        private readonly OwnerService _ownerService;
+        private readonly OwnersService _ownerService;
 
-        public OwnerConsoleService(OwnerService ownerService)
+        public OwnerConsoleService(OwnersService ownerService)
         {
             _ownerService = ownerService;
         }

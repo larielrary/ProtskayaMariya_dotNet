@@ -1,0 +1,44 @@
+﻿@model BusinessLayer.Models.Inspector
+
+<h3>Are you sure?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            <label asp-display-for="FirstName"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Firstname
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-display-for="LastName"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.LastName
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-display-for="MiddleName"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.MiddleName
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-display-for="Position"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Position
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-display-for="Salary"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Salary
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteById">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

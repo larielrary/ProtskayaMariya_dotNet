@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Models.DTO;
+﻿using BusinessLayer.Models;
 using BusinessLayer.Services.ServiceStationService;
 using ConsoleApp.Interfaces;
 using System;
@@ -8,9 +8,9 @@ namespace ConsoleApp
 {
     public class CarConditionConsoleService : IConsoleService, ICrudService<CarTechnicalCondition>
     {
-        private readonly CarTechnicalConditionService _carTechnicalConditionService;
+        private readonly CarTechnicalConditionsService _carTechnicalConditionService;
 
-        public CarConditionConsoleService(CarTechnicalConditionService carTechnicalConditionService)
+        public CarConditionConsoleService(CarTechnicalConditionsService carTechnicalConditionService)
         {
             _carTechnicalConditionService = carTechnicalConditionService;
         }

@@ -1,4 +1,4 @@
-﻿using DataLayer.Entity;
+using DataLayer.Entity;
 
 namespace DataLayer.Models
 {
@@ -10,6 +10,6 @@ namespace DataLayer.Models
         public double EngineCapacity { get; set; }
         public string BodyNubmer { get; set; }
         public int YearOfProduction { get; set; }
-        public int OwnerId { get; set; }    
+        public int OwnerId { get; set; }
     }
 }

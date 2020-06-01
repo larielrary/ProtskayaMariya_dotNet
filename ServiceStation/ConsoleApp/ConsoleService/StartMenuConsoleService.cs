@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp.Interfaces;
+using System;
 using System.Threading.Tasks;
 
 namespace ConsoleApp.ConsoleService

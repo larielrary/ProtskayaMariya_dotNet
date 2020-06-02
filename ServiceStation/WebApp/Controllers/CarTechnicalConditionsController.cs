@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Models;
 using BusinessLayer.Services.ServiceStationService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.Controllers
 {
+    [Authorize(Roles = Roles.Admin)]
     public class CarTechnicalConditionsController : Controller
     {
         private readonly CarTechnicalConditionsService _conditionService;
@@ -23,14 +25,14 @@ namespace WebApp.Controllers
         {
             return View(await _conditionService.GetItems());
         }
-         
+
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken] 
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(IFormCollection collection)
         {
             try
@@ -58,14 +60,14 @@ namespace WebApp.Controllers
                 return View();
             }
         }
-         
+
         public async Task<IActionResult> Edit(int id)
         {
             return View(await _conditionService.GetItem(id));
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken] 
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, IFormCollection collection)
         {
             try
@@ -94,14 +96,14 @@ namespace WebApp.Controllers
                 return View();
             }
         }
-         
+
         public async Task<IActionResult> Delete(int id)
         {
             return View(await _conditionService.GetItem(id));
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken] 
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteById(int id)
         {
             try

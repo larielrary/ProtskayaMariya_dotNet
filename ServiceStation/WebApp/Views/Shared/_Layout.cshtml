@@ -1,4 +1,7 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,7 +20,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                 
+                    <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -25,20 +28,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        
+                        @if (SignInManager.IsSignedIn(User))
+                        {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="Index">Car</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Index">Car</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Inspectors" asp-action="Index">Inspector</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Inspector" asp-action="Index">Inspector</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Owners" asp-action="Index">Owner</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">Owner</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="CarTechnicalConditions" asp-action="Index">Condition</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="CarTechnicalCondition" asp-action="Index">Condition</a>
                             </li>
-                        
+                        }
                     </ul>
                 </div>
                 

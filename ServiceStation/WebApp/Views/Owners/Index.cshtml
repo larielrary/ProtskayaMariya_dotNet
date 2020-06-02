@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<BusinessLayer.Models.Owner>
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@using Microsoft.AspNetCore.Identity
 
 <table class="table">
     <thead>
@@ -26,10 +29,13 @@
             <td asp-display-for="@item.LastName"></td>
             <td asp-display-for="@item.MiddleName"></td>
             <td asp-display-for="@item.PhoneNum"></td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("admin"))
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            }
         </tr>
         }
     </tbody>

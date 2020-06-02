@@ -10,14 +10,14 @@ namespace WebApp
         {
             string email = "mashaprotskaya@gmail.com";
             string password = "pass";
-            if (await roleManager.FindByNameAsync("admin") == null)
+            if (await roleManager.FindByNameAsync(Roles.Admin) == null)
             {
-                await roleManager.CreateAsync(new IdentityRole("admin"));
+                await roleManager.CreateAsync(new IdentityRole(Roles.Admin));
                 serviceStationContext.SaveChanges();
             }
-            if (await roleManager.FindByNameAsync("user") == null)
+            if (await roleManager.FindByNameAsync(Roles.User) == null)
             {
-                await roleManager.CreateAsync(new IdentityRole("user"));
+                await roleManager.CreateAsync(new IdentityRole(Roles.User));
                 serviceStationContext.SaveChanges();
             }
             if (await userManager.FindByNameAsync(email) == null)
@@ -26,7 +26,7 @@ namespace WebApp
                 IdentityResult result = await userManager.CreateAsync(admin, password);
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(admin, "admin");
+                    await userManager.AddToRoleAsync(admin, Roles.Admin);
                     serviceStationContext.SaveChanges();
                 }
             }

@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<BusinessLayer.Models.Car>
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@using Microsoft.AspNetCore.Identity
 
 <table class="table">
     <thead>
@@ -21,7 +24,6 @@
             <th>
                 <label asp-display-for="@Html.DisplayNameFor(model => model.OwnerId)"></label>
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -34,11 +36,13 @@
             <td asp-display-for="@item.BodyNubmer"></td>
             <td asp-display-for="@item.YearOfProduction"></td>
             <td asp-display-for="@item.OwnerId"></td>
-           <td>
-               <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-               <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-            
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("admin"))
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            }
         </tr>
         }
     </tbody>
